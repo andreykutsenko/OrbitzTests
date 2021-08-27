@@ -53,7 +53,9 @@ python3.9 -m venv env
 . ./env/bin/activate
 ```
 
-How to install Python packages with pip and requirements.txt:
+## Run tests
+
+Install Python project packages with pip and requirements.txt:
 
 ```
 pip install -r requirements.txt
