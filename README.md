@@ -1,6 +1,6 @@
 # OrbitzTests Project
 
-Using selenium WebDriver with Python + Behave, for implement the following:
+Using Selenium WebDriver with Python + Behave, for implement the following:
 - Visit www.orbitz.com website.
 - Select Flights
 - Select “Roundtrip”.
