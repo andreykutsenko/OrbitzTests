@@ -1,7 +1,3 @@
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-
-
 class Page:
 
     def __init__(self, driver):
@@ -29,11 +25,4 @@ class Page:
 
     def verify_element_text(self, expected_text: str, *locator):
         actual_text = self.find_element(*locator).text
-        assert actual_text == expected_text, f'Expected {expected_text} text, but got {actual_text} text'
-
-    def wait_for_element_appear(self, *locator):
-        self.driver.wait.until(EC.presence_of_element_located(locator))
-
-    def wait_for_element_click(self, *locator):
-        e = self.driver.wait.until(EC.element_to_be_clickable(locator))
-        e.click()
+        assert expected_text in actual_text, f'Expected {expected_text} text, but got {actual_text} text'
