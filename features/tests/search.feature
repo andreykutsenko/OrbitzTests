@@ -12,4 +12,4 @@ Feature: Flight search testing
     Then Our search results for <city_from>, <city_to> and the date with <start_trip_week> and <back_trip_week> are displayed correctly
     Examples:
       | city_from     | city_to      | start_trip_week | back_trip_week |
-      | San Francisco | New York, NY | 2               | 3              |
+      | San Francisco | New York, NY | 4               | 3              |
