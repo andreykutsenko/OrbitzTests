@@ -43,7 +43,9 @@ Now python3.9 in `/User/USERFOLDER/.python/bin/python3.9`. Update pip:
 sudo /User/USERFOLDER/.python/bin/python3.9 -m pip install -U pip
 ```
 
-Ok, now we can pull our project from Git repository, create and activate Python virtual environment:
+## Pull Project
+
+Ok, now we can pull project from Git repository, create and activate Python virtual environment:
 
 ```
 cd code
@@ -52,14 +54,13 @@ cd OrbitzTests
 python3.9 -m venv env
 . ./env/bin/activate
 ```
-
-## Run tests
-
-Install Python project packages with pip and requirements.txt:
+Install Project packages with pip and requirements.txt:
 
 ```
 pip install -r requirements.txt
 ```
+
+## Run tests
 
 You can run a feature file by using -i or --include flags and then the name of the feature file.
 
