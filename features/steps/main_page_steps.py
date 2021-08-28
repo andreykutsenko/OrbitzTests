@@ -19,3 +19,11 @@ def select_date_trip(context, start_trip_week, back_trip_week):
 @then('Click on Search')
 def click_search_icon(context):
     context.app.main_page.click_icon()
+
+@when('Select the {option} flight from the list')
+def select_exp_flight(context, option):
+    context.app.main_page.select_search_option(option)
+
+@when('Click on the {option} flight')
+def click_most_exp_flight(context, option):
+    context.app.main_page.select_max_exp(option)
