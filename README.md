@@ -49,7 +49,7 @@ Ok, now we can pull project from Git repository, create and activate Python virt
 
 ```
 cd code
-git pull https://github.com/andreykutsenko/OrbitzTests.git
+git clone https://github.com/andreykutsenko/OrbitzTests.git
 cd OrbitzTests
 python3.9 -m venv env
 . ./env/bin/activate
@@ -57,6 +57,7 @@ python3.9 -m venv env
 Install Project packages with pip and requirements.txt:
 
 ```
+pip install -U pip
 pip install -r requirements.txt
 ```
 
