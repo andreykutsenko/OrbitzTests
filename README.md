@@ -57,6 +57,7 @@ python3.9 -m venv env
 Install Project packages with pip and requirements.txt:
 
 ```
+pip install -U pip
 pip install -r requirements.txt
 ```
 
