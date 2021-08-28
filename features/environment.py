@@ -1,13 +1,19 @@
+import os
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 
 from app.application import Application
 
+# def get_browser():
+#    if os.environ['browser'] == 'chrome':
+#        return webdriver.Chrome(executable_path='/Users/kutsenko/GitHub/OrbitzTests/drivers/mac64/chromedriver')
+#    elif os.environ['browser'] == 'ff':
+#        return webdriver.Firefox()
 
 def browser_init(context):
-    context.driver = webdriver.Chrome(executable_path='/home/kts/code/OrbitzTests/drivers/linux64/chromedriver')
-    # context.browser = webdriver.Safari()
-    # context.browser = webdriver.Firefox()
+    context.driver = webdriver.Chrome()
+    # context.driver = webdriver.Firefox()
+    # context.driver = get_browser()
 
     # context.driver.maximize_window()
     context.driver.implicitly_wait(4)

@@ -1,4 +1,5 @@
-# OrbitzTests Project
+# Instawork
+## Automation take-home assignment
 
 Using Selenium WebDriver with Python + Behave, for implement the following:
 - Visit www.orbitz.com website.
@@ -15,15 +16,58 @@ dates match the input data).
 - Click on “Select” and then click on “Select this fare” to book.
 - Assert the flight details & price on the flight review page.
 
+## Setup
 
-## Install python 3.9
-
-Install wget using brew
-
+* Clone the repo `git clone https://github.com/andreykutsenko/OrbitzTests.git`
+* Create and activate Python virtual environment
 ```
-brew install wget
-mkdir ~/code
+python3.9 -m venv env
+. ./env/bin/activate
 ```
+* Install dependencies `pip install -r requirements.txt`
+* Update pip `pip install -U pip`
+
+## Running tests
+
+* Run a feature file by using -i or --include flags and then the name of the feature file.
+
+    `behave -i search.feature`
+
+    or `behave --include search`
+
+* Also you can run a scenario by using -t tag `behave -t '@smoke_kts'`
+* Support multiple browsers. 
+  
+    Edit the environment.py file. Uncomment the line for the browser you want.
+
+For example for launching Firefox:
+```
+def browser_init(context):
+    # context.driver = webdriver.Chrome()
+    context.driver = webdriver.Firefox()
+```
+
+## Allure, test report generation
+
+Allure integrates with behave as an external formatter.
+
+* Installation `pip install allure-behave`
+* Usage:
+
+    You can specify the formatter directly in the command line:
+
+    $ behave -f allure_behave.formatter:AllureFormatter -o %allure_result_folder% ./features
+
+    Example `behave -f allure_behave.formatter:AllureFormatter -o test_results/ features/tests/search.feature`
+
+    To show allure results: allure serve <results_folder>
+
+    Example `allure serve test_results/`
+
+## Additional 
+### Install python 3.9
+
+Install wget using brew `brew install wget`
 
 Build from source python 3.9, install with prefix to ~/.python folder:
 
@@ -37,42 +81,16 @@ make -j8
 sudo make altinstall
 ```
 
-Now python3.9 in `/User/USERFOLDER/.python/bin/python3.9`. Update pip:
+### Drivers
 
-```
-sudo /User/USERFOLDER/.python/bin/python3.9 -m pip install -U pip
-```
+Selenium requires a driver to interface with the chosen browser. 
+Firefox, for example, requires `geckodriver <https://github.com/mozilla/geckodriver/releases>`_, which needs to be installed before the below examples can be run.
+Make sure it's in your `PATH`, e. g., place it in `/usr/bin` or `/usr/local/bin`.
 
-## Pull Project
+Failure to observe this step will give you an error `selenium.common.exceptions.WebDriverException: Message: 'geckodriver' executable needs to be in PATH.`
 
-Ok, now we can pull project from Git repository, create and activate Python virtual environment:
+Other supported browsers will have their own drivers available. Links to some of the more popular browser drivers follow.
+ 
+| **Chrome**:  | https://sites.google.com/a/chromium.org/chromedriver/downloads        |
 
-```
-cd code
-git clone https://github.com/andreykutsenko/OrbitzTests.git
-cd OrbitzTests
-python3.9 -m venv env
-. ./env/bin/activate
-```
-Install Project packages with pip and requirements.txt:
-
-```
-pip install -U pip
-pip install -r requirements.txt
-```
-
-## Run tests
-
-You can run a feature file by using -i or --include flags and then the name of the feature file.
-
-```
-behave -i search.feature
-```
-or:
-```
-behave --include search
-```
-Also you can run a scenario by using -t tag
-```
-behave -t '@smoke_kts'
-```
+| **Firefox**: | https://github.com/mozilla/geckodriver/releases                       |

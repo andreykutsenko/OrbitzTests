@@ -1,6 +1,6 @@
 from selenium.webdriver.common.by import By
 from pages.base_page import Page
-
+from time import sleep
 
 class MainPage(Page):
     SEARCH_FLYING_FROM = (By.ID, 'location-field-leg1-origin')
@@ -12,7 +12,8 @@ class MainPage(Page):
     SELECT_CITY_TO = (By.XPATH, "//*[@id='location-field-leg1-destination-menu']//li[@class='uitk-typeahead-result-item has-subtext']")
     LOCATOR_DEPARTING = (By.ID, 'd1-btn')
     LOCATOR_RETURNING = (By.ID, 'd2-btn')
-    NONSTOP_BUTTON = (By.ID, 'stops-0')
+    # NONSTOP_BUTTON = (By.ID, 'stops-0')
+    NONSTOP_BUTTON = (By.CSS_SELECTOR, ".uitk-switch.uitk-checkbox #stops-0")
     SELECT_OPTIONS_LOCATOR = (By.ID, 'listings-sort')
     LOCATOR_MAX_EXP = (By.XPATH, "//ul[@data-test-id='listings']/li")
     CHECKOUT_BUTTON = (By.XPATH, "//button[@data-test-id='goto-checkout-button']")
@@ -23,11 +24,9 @@ class MainPage(Page):
     def input_city(self, city_field: str, city_text: str):
         self.click(By.XPATH, f"//button[@aria-label='{city_field}']")
         if 'to' in city_field:
-            self.wait_for_element_appear(*self.SEARCH_FLYING_TO)
             self.input(city_text, *self.SEARCH_FLYING_TO)
             self.click_at_first_in_list(*self.SELECT_CITY_TO)
         else:
-            self.wait_for_element_appear(*self.SEARCH_FLYING_FROM)
             self.input(city_text, *self.SEARCH_FLYING_FROM)
             self.click_at_first_in_list(*self.SELECT_CITY_FROM)
 
@@ -63,6 +62,7 @@ class MainPage(Page):
     def select_max_exp(self, option):
         self.click_at_first_in_list(*self.LOCATOR_MAX_EXP)
         self.click(*self.SELECT_BUTTON)
+        sleep(3)
         self.click_tab('Nonstop')
         self.select_options(option, *self.SELECT_OPTIONS_LOCATOR)
         self.click_at_first_in_list(*self.LOCATOR_MAX_EXP)
