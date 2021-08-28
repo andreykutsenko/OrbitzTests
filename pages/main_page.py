@@ -12,7 +12,7 @@ class MainPage(Page):
     SELECT_CITY_TO = (By.XPATH, "//*[@id='location-field-leg1-destination-menu']//li[@class='uitk-typeahead-result-item has-subtext']")
     LOCATOR_DEPARTING = (By.ID, 'd1-btn')
     LOCATOR_RETURNING = (By.ID, 'd2-btn')
-    NONSTOP_BUTTON = (By.XPATH, "//input[@data-test-id='stops-0']")
+    NONSTOP_BUTTON = (By.ID, 'stops-0')
     SELECT_OPTIONS_LOCATOR = (By.ID, 'listings-sort')
     LOCATOR_MAX_EXP = (By.XPATH, "//ul[@data-test-id='listings']/li")
     CHECKOUT_BUTTON = (By.XPATH, "//button[@data-test-id='goto-checkout-button']")
@@ -61,8 +61,7 @@ class MainPage(Page):
     def select_max_exp(self, option):
         self.click_at_first_in_list(*self.LOCATOR_MAX_EXP)
         self.click(*self.SELECT_BUTTON)
-        self.wait_for_element_appear(*self.NONSTOP_BUTTON)
-        self.click(*self.NONSTOP_BUTTON)
+        self.click_tab('Nonstop')
         self.select_options(option, *self.SELECT_OPTIONS_LOCATOR)
         self.click_at_first_in_list(*self.LOCATOR_MAX_EXP)
         self.click(*self.SELECT_BUTTON)
