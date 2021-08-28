@@ -23,9 +23,11 @@ class MainPage(Page):
     def input_city(self, city_field: str, city_text: str):
         self.click(By.XPATH, f"//button[@aria-label='{city_field}']")
         if 'to' in city_field:
+            self.wait_for_element_appear(*self.SEARCH_FLYING_TO)
             self.input(city_text, *self.SEARCH_FLYING_TO)
             self.click_at_first_in_list(*self.SELECT_CITY_TO)
         else:
+            self.wait_for_element_appear(*self.SEARCH_FLYING_FROM)
             self.input(city_text, *self.SEARCH_FLYING_FROM)
             self.click_at_first_in_list(*self.SELECT_CITY_FROM)
 

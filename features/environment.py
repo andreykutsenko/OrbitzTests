@@ -5,7 +5,7 @@ from app.application import Application
 
 
 def browser_init(context):
-    context.driver = webdriver.Chrome(executable_path='drivers/chromedriver')
+    context.driver = webdriver.Chrome(executable_path='/home/kts/code/OrbitzTests/drivers/linux64/chromedriver')
     # context.browser = webdriver.Safari()
     # context.browser = webdriver.Firefox()
 
