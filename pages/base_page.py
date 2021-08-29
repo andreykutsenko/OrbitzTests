@@ -5,6 +5,8 @@ from selenium.webdriver.support import expected_conditions as EC
 from datetime import date
 from dateutil.relativedelta import relativedelta
 
+from app.logger import logger
+
 
 class Page:
 
@@ -24,6 +26,7 @@ class Page:
     def input(self, text: str, *locator):
         input_field = self.find_element(*locator)
         input_field.clear()
+        logger.info(f'Input text: {text}')
         input_field.send_keys(text)
 
     def click(self, *locator):

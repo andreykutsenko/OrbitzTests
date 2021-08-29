@@ -1,3 +1,4 @@
+from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.by import By
 from pages.base_page import Page
 from time import sleep
@@ -63,8 +64,10 @@ class MainPage(Page):
         self.click_at_first_in_list(*self.LOCATOR_MAX_EXP)
         self.click(*self.SELECT_BUTTON)
         sleep(3)
-        self.click_tab('Nonstop')
-        self.select_options(option, *self.SELECT_OPTIONS_LOCATOR)
+        try:
+            self.click_tab('Nonstop')
+        finally:
+            self.select_options(option, *self.SELECT_OPTIONS_LOCATOR)
         self.click_at_first_in_list(*self.LOCATOR_MAX_EXP)
         self.click(*self.SELECT_BUTTON)
 
