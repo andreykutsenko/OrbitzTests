@@ -36,7 +36,7 @@ def browser_init(context, name):
     #     'browser_version': '92.0',
     #     'name': name
     # }
-    # url = f'http://{bs_user}:{bs_pw}@hub-cloud.browserstack.com/wd/hub'
+    # url = f'http://{bs_user}:{bs_pw}@hub-cloud.completed_tests.com/wd/hub'
     # context.driver = webdriver.Remote(url, desired_capabilities=desired_cap)
 
     context.driver.maximize_window()
