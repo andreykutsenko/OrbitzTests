@@ -6,6 +6,8 @@ from selenium.webdriver.support.ui import WebDriverWait
 from app.application import Application
 from app.logger import *
 
+bs_user = 'andreykutsenko1'
+bs_pw = 'KwWTFPpdaewrqzqtSGQR'
 
 # def get_browser():
 #     if os.environ['browser'] == 'chrome':
@@ -16,7 +18,7 @@ from app.logger import *
 #         raise ValueError('Browser was not provided!')
 
 
-def browser_init(context):
+def browser_init(context, name):
     # context.driver = get_browser()
 
     # context.driver = webdriver.Chrome()
@@ -26,7 +28,18 @@ def browser_init(context):
     # EventFiringWebDriver - log file
     context.driver = EventFiringWebDriver(webdriver.Chrome(), MyListener())
 
-    # context.driver.maximize_window()
+    # for BrowserStack #
+    # desired_cap = {
+    #     'os': 'OS X',
+    #     'os_version': 'Big Sur',
+    #     'browser': 'Chrome',
+    #     'browser_version': '92.0',
+    #     'name': name
+    # }
+    # url = f'http://{bs_user}:{bs_pw}@hub-cloud.browserstack.com/wd/hub'
+    # context.driver = webdriver.Remote(url, desired_capabilities=desired_cap)
+
+    context.driver.maximize_window()
     context.driver.implicitly_wait(4)
     context.app = Application(context.driver)
     context.wait = WebDriverWait(context.driver, 15)
@@ -35,7 +48,7 @@ def browser_init(context):
 def before_scenario(context, scenario):
     logger.info(f'\nStarted scenario: {scenario.name}')
     print('\nStarted scenario: ', scenario.name)
-    browser_init(context)
+    browser_init(context, scenario.name)
 
 
 def before_step(context, step):

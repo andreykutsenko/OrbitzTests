@@ -17,7 +17,7 @@ class ResultsPage(Page):
         start = dict_details["start"]
         back = dict_details["back"]
         self.verify_element_text(city_from, *self.FLYING_FROM_TEXT)
-        self.verify_element_text(city_to, *self.FLYING_TO_TEXT)
+        self.verify_element_text(city_to[:city_to.find(',')], *self.FLYING_TO_TEXT)
         self.verify_element_text(start, *self.START_DATE)
         self.verify_element_text(back, *self.END_DATE)
 

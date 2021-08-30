@@ -35,6 +35,8 @@ python3.9 -m venv env
 
     or `behave --include search`
 
+    or `behave`
+
 * Also you can run a scenario by using -t tag `behave -t '@smoke_kts'`
 * Support multiple browsers. 
   

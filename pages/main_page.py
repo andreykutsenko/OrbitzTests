@@ -4,13 +4,17 @@ from pages.base_page import Page
 from time import sleep
 
 class MainPage(Page):
-    SEARCH_FLYING_FROM = (By.ID, 'location-field-leg1-origin')
-    SEARCH_FLYING_TO = (By.ID, 'location-field-leg1-destination')
+    # SEARCH_FLYING_FROM = (By.ID, 'location-field-leg1-origin')
+    SEARCH_FLYING_FROM = (By.XPATH, "//input[@placeholder='Where are you leaving from?']")
+    # SEARCH_FLYING_TO = (By.ID, 'location-field-leg1-destination')
+    SEARCH_FLYING_TO = (By.XPATH, "//input[@placeholder='Where are you going to?']")
     SEARCH_BUTTON = (By.CSS_SELECTOR, '[data-testid=submit-button]')
     SELECT_BUTTON = (By.XPATH, "//button[@data-test-id='select-button']")
     DONE_BUTTON = (By.CSS_SELECTOR, '[data-stid=apply-date-picker]')
-    SELECT_CITY_FROM = (By.XPATH, "//*[@id='location-field-leg1-origin-menu']//li[@class='uitk-typeahead-result-item has-subtext']")
-    SELECT_CITY_TO = (By.XPATH, "//*[@id='location-field-leg1-destination-menu']//li[@class='uitk-typeahead-result-item has-subtext']")
+    # SELECT_CITY_FROM = (By.XPATH, "//*[@id='location-field-leg1-origin-menu']//li[@class='uitk-typeahead-result-item has-subtext']")
+    SELECT_CITY_FROM = (By.XPATH, "//input[@placeholder='Where are you leaving from?']/..//..//..//..//li[@class='uitk-typeahead-result-item has-subtext']")
+    # SELECT_CITY_TO = (By.XPATH, "//*[@id='location-field-leg1-destination-menu']//li[@class='uitk-typeahead-result-item has-subtext']")
+    SELECT_CITY_TO = (By.XPATH, "//input[@placeholder='Where are you going to?']/..//..//..//..//li[@class='uitk-typeahead-result-item has-subtext']")
     LOCATOR_DEPARTING = (By.ID, 'd1-btn')
     LOCATOR_RETURNING = (By.ID, 'd2-btn')
     # NONSTOP_BUTTON = (By.ID, 'stops-0')
@@ -46,11 +50,13 @@ class MainPage(Page):
         back_month = dict_details["back_month"]
 
         self.click(*self.LOCATOR_DEPARTING)
-        start_locator = f"//div[@class='uitk-date-picker-menu-months-container']//tbody//button[@data-day='{start_date}' and contains(@aria-label,'{start_month}')]"
+        # start_locator = f"//div[@class='uitk-date-picker-menu-months-container']//tbody//button[@data-day='{start_date}' and contains(@aria-label,'{start_month}')]"
+        start_locator = f"//tbody//button[@data-day='{start_date}' and contains(@aria-label,'{start_month}')]"
         self.click(By.XPATH, start_locator)
         self.click(*self.DONE_BUTTON)
         self.click(*self.LOCATOR_RETURNING)
-        back_locator = f"//div[@class='uitk-date-picker-menu-months-container']//tbody//button[@data-day='{back_date}' and contains(@aria-label,'{back_month}')]"
+        # back_locator = f"//div[@class='uitk-date-picker-menu-months-container']//tbody//button[@data-day='{back_date}' and contains(@aria-label,'{back_month}')]"
+        back_locator = f"//tbody//button[@data-day='{back_date}' and contains(@aria-label,'{back_month}')]"
         self.click(By.XPATH, back_locator)
         self.click(*self.DONE_BUTTON)
 

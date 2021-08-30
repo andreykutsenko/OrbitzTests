@@ -16,5 +16,5 @@ Feature: Flight search testing
     And Click on the <price> flight
     Then Our the flight details for <city_from>, <city_to> and the date with <start_trip_week> and <back_trip_week> are displayed correctly
     Examples:
-      | city_from     | city_to      | price           | start_trip_week | back_trip_week |
-      | San Francisco | New York, NY | Price (Highest) |2                | 3              |
+      | city_from     | city_to       | price           | start_trip_week | back_trip_week |
+      | San Francisco | New York, JFK | Price (Highest) |2                | 3              |
