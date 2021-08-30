@@ -34,7 +34,8 @@ def browser_init(context, name):
     #     'os_version': 'Big Sur',
     #     'browser': 'Chrome',
     #     'browser_version': '92.0',
-    #     'name': name
+    #     'name': name,
+    #     'browserstack.networkLogs': True
     # }
     # url = f'http://{bs_user}:{bs_pw}@hub-cloud.browserstack.com/wd/hub'
     # context.driver = webdriver.Remote(url, desired_capabilities=desired_cap)
