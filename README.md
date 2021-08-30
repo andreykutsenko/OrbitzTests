@@ -24,8 +24,9 @@ dates match the input data).
 python3.9 -m venv env
 . ./env/bin/activate
 ```
-* Install dependencies `pip install -r requirements.txt`
 * Update pip `pip install -U pip`
+* Install dependencies `pip install -r requirements.txt`
+
 
 ## Running tests
 
@@ -38,16 +39,7 @@ python3.9 -m venv env
     or `behave`
 
 * Also you can run a scenario by using -t tag `behave -t '@smoke_kts'`
-* Support multiple browsers. 
-  
-    Edit the environment.py file. Uncomment the line for the browser you want.
 
-For example for launching Firefox:
-```
-def browser_init(context):
-    # context.driver = webdriver.Chrome()
-    context.driver = webdriver.Firefox()
-```
 
 ## Allure, test report generation
 
