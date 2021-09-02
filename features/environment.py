@@ -36,9 +36,9 @@ def browser_init(context, name):
          'browser_version': '92.0',
          'name': name,
          'browserstack.networkLogs': True
-     }
-     url = f'http://{bs_user}:{bs_pw}@hub-cloud.browserstack.com/wd/hub'
-     context.driver = webdriver.Remote(url, desired_capabilities=desired_cap)
+    }
+    url = f'http://{bs_user}:{bs_pw}@hub-cloud.browserstack.com/wd/hub'
+    context.driver = webdriver.Remote(url, desired_capabilities=desired_cap)
 
     context.driver.maximize_window()
     context.driver.implicitly_wait(4)
