@@ -26,19 +26,19 @@ def browser_init(context, name):
     # context.driver = webdriver.Firefox()
 
     # EventFiringWebDriver - log file
-    context.driver = EventFiringWebDriver(webdriver.Chrome(), MyListener())
+    #  context.driver = EventFiringWebDriver(webdriver.Chrome(), MyListener())
 
     # for BrowserStack #
-    # desired_cap = {
-    #     'os': 'OS X',
-    #     'os_version': 'Big Sur',
-    #     'browser': 'Chrome',
-    #     'browser_version': '92.0',
-    #     'name': name,
-    #     'browserstack.networkLogs': True
-    # }
-    # url = f'http://{bs_user}:{bs_pw}@hub-cloud.browserstack.com/wd/hub'
-    # context.driver = webdriver.Remote(url, desired_capabilities=desired_cap)
+    desired_cap = {
+         'os': 'OS X',
+         'os_version': 'Big Sur',
+         'browser': 'Chrome',
+         'browser_version': '92.0',
+         'name': name,
+         'browserstack.networkLogs': True
+     }
+     url = f'http://{bs_user}:{bs_pw}@hub-cloud.browserstack.com/wd/hub'
+     context.driver = webdriver.Remote(url, desired_capabilities=desired_cap)
 
     context.driver.maximize_window()
     context.driver.implicitly_wait(4)
