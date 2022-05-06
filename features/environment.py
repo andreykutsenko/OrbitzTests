@@ -6,8 +6,8 @@ from selenium.webdriver.support.ui import WebDriverWait
 from app.application import Application
 from app.logger import *
 
-bs_user = 'andreykutsenko1'
-bs_pw = 'KwWTFPpdaewrqzqtSGQR'
+bs_user = 'ak_O0wUey'
+bs_pw = 'tgx7SQNKS3ktvVzsCs2P'
 
 # def get_browser():
 #     if os.environ['browser'] == 'chrome':
